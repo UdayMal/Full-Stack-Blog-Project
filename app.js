@@ -13,12 +13,14 @@ const passportConfig = require("./config/passport");
 const errorHandler = require("./middlewares/errorHandler");                     
 const commentRoutes = require("./routes/commentRoutes");
 const methodOverride = require("method-override");  
+const userRoutes = require("./routes/userRoutes");
 
 // port 
 const PORT = process.env.PORT || 3000;
 
 // middlewares: passing form data 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // session middleware 
 app.use(
@@ -53,6 +55,7 @@ app.get("/", (req,res) => {
 app.use("/auth", authRoutes);
 app.use("/posts", postRoutes); 
 app.use("/", commentRoutes);        
+app.use("/user", userRoutes);
 
 // error handler
 app.use(errorHandler);

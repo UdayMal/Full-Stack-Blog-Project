@@ -17,15 +17,16 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
     profilePicture: {
-        type: String, 
+        type: Object, 
         public_id: String,
+        url: String,
     },
     bio: {
         type: String,
     },
     posts: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"Post"
+        ref:"Post" 
     }],
     comments: [
         {
